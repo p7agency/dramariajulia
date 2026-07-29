@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Calendar, ArrowRight, PhoneCall, CheckCircle2, Home, Clock, Heart } from 'lucide-react';
+import { Calendar, ArrowRight, PhoneCall, CheckCircle2, Home, Heart } from 'lucide-react';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -9,17 +9,14 @@ export default function Hero({ onOpenBooking }: HeroProps) {
   return (
     <section className="relative min-h-screen flex flex-col justify-center bg-[#FDFAF8] overflow-hidden">
 
-      {/* ── Ambient background shapes ── */}
+      {/* Ambient background shapes */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Large soft rose circle — top right */}
         <div className="absolute -top-32 -right-32 w-[640px] h-[640px] rounded-full bg-[#D87088]/[0.07] blur-3xl" />
-        {/* Small warm accent — bottom left */}
         <div className="absolute bottom-0 -left-24 w-[400px] h-[400px] rounded-full bg-[#D87088]/[0.05] blur-3xl" />
-        {/* Faint center glow */}
         <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#f5e8ec]/60 blur-3xl" />
       </div>
 
-      {/* ── Subtle diagonal line ── */}
+      {/* Subtle diagonal texture */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.04]">
         <div
           className="absolute top-0 left-0 w-full h-full"
@@ -30,7 +27,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
         />
       </div>
 
-      {/* ── Main content ── */}
+      {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-10 lg:px-16 pt-28 pb-16 lg:pt-32 lg:pb-20">
 
         {/* Top label */}
@@ -46,10 +43,10 @@ export default function Hero({ onOpenBooking }: HeroProps) {
           </span>
         </motion.div>
 
-        {/* ── Two-column grid ── */}
+        {/* Two-column grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* ─── LEFT COLUMN ─── */}
+          {/* LEFT COLUMN */}
           <div className="flex flex-col gap-8">
 
             {/* Headline */}
@@ -89,12 +86,18 @@ export default function Hero({ onOpenBooking }: HeroProps) {
 
             {/* Quote */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="flex items-start gap-4"
             >
-              <div className="w-0.5 h-14 bg-[#D87088] shrink-0 mt-0.5" />
+              <motion.div
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{ duration: 0.5, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                style={{ originY: 0 }}
+                className="w-0.5 h-14 bg-[#D87088] shrink-0 mt-0.5"
+              />
               <p className="font-serif text-lg sm:text-xl text-[#D87088] italic font-normal leading-snug">
                 &ldquo;Cuidado médico baseado em ciência,
                 tempo e individualidade.&rdquo;
@@ -140,18 +143,14 @@ export default function Hero({ onOpenBooking }: HeroProps) {
               </a>
             </motion.div>
 
-            {/* Trust chips */}
+            {/* Trust chips — sem emissão de recibo */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.68 }}
               className="flex flex-wrap gap-x-5 gap-y-2 pt-4 border-t border-[#D87088]/15"
             >
-              {[
-                'Emissão de recibo para reembolso',
-                'Acompanhamento contínuo',
-                'Itaperuna / RJ',
-              ].map((item) => (
+              {['Acompanhamento contínuo', 'Itaperuna / RJ'].map((item) => (
                 <span
                   key={item}
                   className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#3B4761]/70"
@@ -163,17 +162,15 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             </motion.div>
           </div>
 
-          {/* ─── RIGHT COLUMN ─── */}
+          {/* RIGHT COLUMN */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.85, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.9, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col gap-4"
           >
             {/* Portrait card */}
             <div className="relative rounded-3xl overflow-hidden border border-[#D87088]/20 shadow-[0_20px_60px_rgba(216,112,136,0.12)] bg-gradient-to-br from-white to-[#FDF0F3]">
-
-              {/* Aspect ratio wrapper */}
               <div className="aspect-[4/5] flex flex-col justify-between p-7">
 
                 {/* Card header */}
@@ -187,8 +184,11 @@ export default function Hero({ onOpenBooking }: HeroProps) {
                 {/* Center monogram */}
                 <div className="flex flex-col items-center justify-center gap-5 flex-1 py-8">
                   <div className="relative">
-                    {/* Outer ring */}
-                    <div className="absolute inset-0 rounded-full bg-[#D87088]/10 scale-[1.18] blur-sm" />
+                    <motion.div
+                      animate={{ scale: [1, 1.04, 1] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="absolute inset-0 rounded-full bg-[#D87088]/12 scale-[1.22] blur-md"
+                    />
                     <div
                       className="relative w-28 h-28 rounded-full flex items-center justify-center"
                       style={{
@@ -199,8 +199,9 @@ export default function Hero({ onOpenBooking }: HeroProps) {
                     >
                       <span className="font-serif text-5xl font-semibold text-white/85 select-none">mj</span>
                     </div>
-                    {/* Status dot */}
-                    <div
+                    <motion.div
+                      animate={{ opacity: [1, 0.5, 1] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
                       className="absolute bottom-0.5 right-0.5 w-5 h-5 rounded-full bg-[#D87088] border-2 border-white"
                       style={{ boxShadow: '0 0 10px rgba(216,112,136,0.7)' }}
                     />
@@ -229,15 +230,17 @@ export default function Hero({ onOpenBooking }: HeroProps) {
               </div>
             </div>
 
-            {/* Three micro-cards row */}
-            <div className="grid grid-cols-3 gap-3">
+            {/* Two micro-cards — sem Consultas Estendidas */}
+            <div className="grid grid-cols-2 gap-3">
               {[
-                { icon: Clock, label: 'Consultas', sub: 'Estendidas' },
                 { icon: Heart, label: 'Cuidado', sub: 'Individual' },
                 { icon: Home, label: 'Consultório', sub: '& Domicílio' },
-              ].map(({ icon: Icon, label, sub }) => (
-                <div
+              ].map(({ icon: Icon, label, sub }, i) => (
+                <motion.div
                   key={label}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.55 + i * 0.08 }}
                   className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white border border-[#D87088]/15 hover:border-[#D87088]/40 hover:shadow-md transition-all duration-300 text-center"
                 >
                   <div className="w-9 h-9 rounded-full bg-[#F8E8EC] flex items-center justify-center">
@@ -247,12 +250,15 @@ export default function Hero({ onOpenBooking }: HeroProps) {
                     <p className="text-[10px] font-bold text-[#121829] uppercase tracking-wide leading-none">{label}</p>
                     <p className="text-[10px] text-[#3B4761]/60 leading-tight mt-0.5">{sub}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            {/* Location + book pill */}
-            <button
+            {/* Location pill */}
+            <motion.button
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.72 }}
               onClick={onOpenBooking}
               className="group flex items-center justify-between p-4 rounded-2xl bg-white border border-[#D87088]/20 hover:border-[#D87088]/50 hover:shadow-lg transition-all duration-300 cursor-pointer"
             >
@@ -268,12 +274,12 @@ export default function Hero({ onOpenBooking }: HeroProps) {
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#D87088] group-hover:translate-x-0.5 transition-transform">
                 Agendar &rarr;
               </span>
-            </button>
+            </motion.button>
           </motion.div>
         </div>
       </div>
 
-      {/* ── Bottom fade ── */}
+      {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#FDFAF8] to-transparent pointer-events-none" />
     </section>
   );
