@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-page: #FDF9FA;
+    --bg-card: #FFFFFF;
+    --navy-dark: #121829;
+    --navy-muted: #3B4761;
+    --rose-brand: #D87088;
+    --rose-hover: #C55B74;
+    --rose-soft: #F8E8EC;
+    --rose-border: rgba(216, 112, 136, 0.25);
+    --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); color: #121829; background-color: #FDF9FA; }
+  h1, h2, h3, h4, .font-serif, .serif { font-family: var(--font-serif); }
+}
+
+.font-display { font-family: 'Cormorant Garamond', 'Georgia', serif; }
+.font-body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #FDF9FA; }
+::-webkit-scrollbar-thumb { background: #E8C2CB; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #D87088; }
+
+.interactive-card { transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+.interactive-card:hover { transform: translateY(-4px); border-color: rgba(216, 112, 136, 0.5); box-shadow: 0 12px 30px -10px rgba(216, 112, 136, 0.15); }
+
+@keyframes pulseGlow { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
+.pulse-glow { animation: pulseGlow 4s ease-in-out infinite; }

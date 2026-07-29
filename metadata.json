@@ -1,0 +1,6 @@
+{
+  "name": "Dra. Maria Júlia Merhge - Medicina para a Vida",
+  "description": "Landing page médica para a Dra. Maria Júlia Merhge em Itaperuna/RJ.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
