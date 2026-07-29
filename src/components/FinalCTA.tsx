@@ -6,34 +6,67 @@ interface FinalCTAProps { onOpenBooking: () => void; }
 
 export default function FinalCTA({ onOpenBooking }: FinalCTAProps) {
   return (
-    <section className="py-24 lg:py-32 bg-[#0E1322] text-white relative border-t border-[#D87088]/30 overflow-hidden">
-      <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-[#D87088]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.7 }} className="bg-[#151D30] rounded-2xl p-8 sm:p-12 lg:p-16 border border-[#D87088]/40 shadow-2xl text-center space-y-8 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#D87088]/15 rounded-bl-full pointer-events-none" />
-          <div className="inline-flex items-center gap-2 text-[#D87088] text-[11px] font-bold tracking-[0.2em] uppercase border-b border-[#D87088]/30 pb-1">
-            <MapPin className="w-4 h-4 text-[#D87088]" />
-            <span>{FINAL_CTA_DATA.location}</span>
+    <section className="relative py-20 lg:py-28 bg-[#121829] text-white overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#D87088]/07 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center space-y-8"
+        >
+          <div className="flex items-center justify-center gap-3">
+            <div className="w-8 h-px bg-[#D87088]/60" />
+            <div className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.38em] text-[#D87088]/80">
+              <MapPin className="w-3.5 h-3.5" />
+              {FINAL_CTA_DATA.location}
+            </div>
+            <div className="w-8 h-px bg-[#D87088]/60" />
           </div>
-          <div className="space-y-3 max-w-3xl mx-auto">
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-white">{FINAL_CTA_DATA.title}</h2>
-            <p className="font-serif text-xl sm:text-2xl text-[#D87088] font-normal italic">{FINAL_CTA_DATA.subtitle}</p>
+
+          <div className="space-y-3">
+            <h2
+              className="font-serif text-white"
+              style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', letterSpacing: '-0.025em', lineHeight: 1.08 }}
+            >
+              {FINAL_CTA_DATA.title}
+            </h2>
+            <p className="font-serif text-xl text-[#D87088] italic">{FINAL_CTA_DATA.subtitle}</p>
           </div>
-          <p className="text-base sm:text-lg text-[#F8E8EC]/85 max-w-2xl mx-auto leading-relaxed">{FINAL_CTA_DATA.description}</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <button onClick={onOpenBooking} className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-full bg-[#D87088] hover:bg-[#c25870] text-white font-semibold text-xs tracking-widest uppercase shadow-lg transition-all duration-300 cursor-pointer">
-              <Calendar className="w-4 h-4 text-white" />
-              <span>Agendar Consulta Agora</span>
+
+          <p className="text-white/55 max-w-2xl mx-auto leading-relaxed">
+            {FINAL_CTA_DATA.description}
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              onClick={onOpenBooking}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-xl bg-[#D87088] hover:bg-[#C55B74] text-white font-bold text-xs tracking-[0.2em] uppercase shadow-[0_8px_30px_rgba(216,112,136,0.4)] transition-all cursor-pointer"
+            >
+              <Calendar className="w-4 h-4" /> Agendar Consulta Agora
             </button>
-            <a href="https://wa.me/5522999999999" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full border border-[#D87088]/40 text-white hover:bg-white/10 font-semibold text-xs tracking-widest uppercase transition-colors">
-              <MessageCircle className="w-4 h-4 text-[#D87088]" />
-              <span>Contato via WhatsApp</span>
+            <a
+              href="https://wa.me/5522999999999"
+              target="_blank" rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl border border-white/15 text-white hover:bg-white/05 font-bold text-xs tracking-wider uppercase transition-all"
+            >
+              <MessageCircle className="w-4 h-4 text-[#D87088]" /> WhatsApp
             </a>
           </div>
-          <div className="pt-8 border-t border-[#D87088]/20 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-[#F8E8EC]/80">
-            <div className="flex items-center justify-center gap-2"><Clock className="w-4 h-4 text-[#D87088]" /><span className="font-bold text-xs uppercase tracking-wider">Tempo Estendido de Atendimento</span></div>
-            <div className="flex items-center justify-center gap-2"><ShieldCheck className="w-4 h-4 text-[#D87088]" /><span className="font-bold text-xs uppercase tracking-wider">Emitimos Recibo para Reembolso</span></div>
-            <div className="flex items-center justify-center gap-2"><Heart className="w-4 h-4 text-[#D87088]" /><span className="font-bold text-xs uppercase tracking-wider">Consultório Físico & Domiciliar</span></div>
+
+          <div className="pt-8 border-t border-white/08 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { icon: Clock, text: 'Tempo Estendido de Atendimento' },
+              { icon: ShieldCheck, text: 'Recibo para Reembolso' },
+              { icon: Heart, text: 'Consultório Físico & Domiciliar' },
+            ].map(({ icon: Icon, text }) => (
+              <div key={text} className="flex items-center justify-center gap-2 text-white/35">
+                <Icon className="w-4 h-4 text-[#D87088]" />
+                <span className="text-[10px] font-bold uppercase tracking-wider">{text}</span>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>
